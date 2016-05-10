@@ -52,29 +52,31 @@ var parseData= function parseData(data){
                                     name : attribute.Name, 
                                     type : type,
                                     scope : attribute.Scope,
-                                    readOnly : attribute.ReadOnly,
-                                    hasGetter : attribute.HasGetter,
-                                    hasSetter : attribute.HasSetter,
-                                    visibility : attribute.Visibility}
+                                    read_only : attribute.ReadOnly,
+                                    have_getter : attribute.HasGetter,
+                                    have_setter : attribute.HasSetter,
+                                    visibility : attribute.Visibility,
+                                    multiplicity : (attribute.TypeModifier ? 0 : 1)
+                                }
                                 oneClass.attributes.push(attributeCrt);
                             }
                             else if(attributes[j].name == "Operation"){
                                 var operation = attributes[j];
                                 var operationCrt = {
-                                    comment : operation.attr.Documentation_plain,
                                     name : operation.attr.Name
                                     ,visibility : operation.attr.Visibility
                                     ,static : operation.attr.Static
                                     ,abstrac : operation.attr.Abstract
                                     ,scope : operation.attr.Scope
                                     ,parameters : []
-                                    ,returnType : "void"
+                                    ,return_type : operation.attr.ReturnType
                                     ,comment : operation.attr.Documentation_plain
+                                    ,return_comment : operation.attr.ReturnTypeDocumentation_plain
                                 };
-                                                                
+
                                 for(var z=0;z<operation.children.length;z++){
                                     if(operation.children[z].name == "ReturnType"){
-                                        operationCrt.returnType = operation.children[z].firstChild.attr.Name;
+                                        operationCrt.return_type = operation.children[z].firstChild.attr.Name;
                                     }
                                     else if(operation.children[z].name == "ModelChildren"){
                                         var parameters = operation.children[z].children;
@@ -84,6 +86,8 @@ var parseData= function parseData(data){
                                             if(parameters[x].name=="Parameter"){
                                                 parameterCrt.name = parameters[x].attr.Name;
                                                 parameterCrt.comment = parameters[x].attr.Documentation_plain;
+                                                parameterCrt.multiplicity = (parameters[x].attr.TypeModifier ? 0 : 1)
+
                                                 if(parameters[x].attr.Type)
                                                     parameterCrt.type = parameters[x].attr.Type;
                                                 else if(parameters[x].firstChild && parameters[x].firstChild.firstChild){

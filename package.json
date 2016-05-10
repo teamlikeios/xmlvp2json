@@ -8,8 +8,8 @@
   },
   "author": "Rafael Jimenez",
   "license": "MIT",
-  "repository":{
-     "type":"git",
-      "url":"https://github.com/teamlikeios/xmlvp2json"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/teamlikeios/xmlvp2json"
   }
 }
