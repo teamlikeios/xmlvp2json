@@ -22,10 +22,11 @@ Voici un exemple pour le rendu d'une classe avec ses attributs et operations:
 				"name": "nomDeAttribut",
 				"type": "typeDeAttribut",
 				"scope": "instance",
-				"readOnly": "false",
-				"hasGetter": "false",
-				"hasSetter": "false",
-				"visibility": "private"
+				"read_only": "false",
+				"have_getter": "false",
+				"have_setter": "false",
+				"visibility": "private",
+				"multiplicity": 1,
 			}
 		],
 		"operations": [
@@ -40,15 +41,20 @@ Voici un exemple pour le rendu d'une classe avec ses attributs et operations:
 					{
 						"name": "premierParametreString",
 						"comment": "c'est le premier paramètre",
-						"type": "string"
+						"type": "string",
+                        "multiplicity": 1
+
 					},
 					{
 						"name": "deuxiemeParametreBoolean",
 						"comment": "Deuxième paramètre",
-						"type": "boolean"
+						"type": "boolean",
+                        "multiplicity": 1,
+
 					}
 				],
-				"returnType": "void - ou n'importe quel type"
+				"return_type": "void - ou n'importe quel type"
+				"return_comment": "commentaire du type de retour"
 			}
 		],
 		"name": "NomDeLaClasse",
