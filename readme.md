@@ -53,7 +53,7 @@ Voici un exemple pour le rendu d'une classe avec ses attributs et operations:
 
 					}
 				],
-				"return_type": "void - ou n'importe quel type"
+				"return_type": "void - ou n'importe quel type",
 				"return_comment": "commentaire du type de retour"
 			}
 		],
