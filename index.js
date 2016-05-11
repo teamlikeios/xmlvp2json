@@ -56,6 +56,8 @@ var parseData= function parseData(data){
                                     have_getter : attribute.HasGetter,
                                     have_setter : attribute.HasSetter,
                                     visibility : attribute.Visibility,
+                                    is_constant : (attribute.ReadOnly=="true"&&attribute.InitialValue!=null),
+                                    default : attribute.InitialValue,
                                     multiplicity : (attribute.TypeModifier ? 0 : 1)
                                 }
                                 oneClass.attributes.push(attributeCrt);
