@@ -1,7 +1,7 @@
 {
   "name": "xmlvp2json",
   "description": "Cette application permet de transformer un fichier xmlvp en json",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "main": "index.js",
   "dependencies": {
     "xmldoc": "^0.5.0"

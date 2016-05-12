@@ -1,7 +1,10 @@
 
 var xmldoc = require('xmldoc');
-
-var parseData= function parseData(data){
+var packageData=null;
+/**
+* @param onlyLastPackage parfois il se peu que le diagramme récupère des package d'autre diagramme de classe, cela permet de limiter la recherche
+*/
+var parseData= function parseData(data,packageWithSameName){
     try{
         //transformation de xml->json
         var document = new xmldoc.XmlDocument(data);
@@ -9,6 +12,17 @@ var parseData= function parseData(data){
         var models;
         var allClasses = [];
 
+        var searchClassDiagramName = function(array){
+            for(var j =0;j<array.length;j++){
+                if(array[j].name=="Diagrams"){
+		    var children = array[j].children;
+                    return children[0].attr.Name;
+                }
+            }
+            return null;
+        }
+	var packageName = searchClassDiagramName(children);
+	console.log("\n******\n"+packageName+"\n******\n")
         for(var i=0;i<children.length;i++){
             if(children[i].name == "Models"){
                 models = children[i];
@@ -109,10 +123,12 @@ var parseData= function parseData(data){
                 }
                 else if(children[i].name=="Package"){
 
-                    var data = searchModelChildren(children[i].children)
 
-                    if(data){
-                        parseModels(data);
+
+                    if(!packageWithSameName||(children[i].attr.Name==packageName)){
+                        packageData = searchModelChildren(children[i].children)
+		        console.log("\n\n\nNo Package Data \n\n\n");
+                        parseModels(packageData);
                     }
                 }
             }

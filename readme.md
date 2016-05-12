@@ -2,6 +2,9 @@
 
 Permet de transformer un fichier xmlvp en json
 
+###v0.2.0
+Dans cette version il est possible de choisir si l'on veut uniquement récupérer les donnéer du package courant donc "PackageName" == "DiagramName"
+
 ##Install
 ```
 $ npm install xmlvp2json
