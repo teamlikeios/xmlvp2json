@@ -2,6 +2,8 @@
 
 Permet de transformer un fichier xmlvp en json
 
+###v0.3.0
+Ajout du champ extend
 ###v0.2.0
 Dans cette version il est possible de choisir si l'on veut uniquement récupérer les donnéer du package courant donc "PackageName" == "DiagramName"
 
@@ -60,6 +62,14 @@ Voici un exemple pour le rendu d'une classe avec ses attributs et operations:
 				"return_comment": "commentaire du type de retour"
 			}
 		],
+        extend: 
+        {
+            attributes: [Object],
+            operations: [],
+            name: 'Animaux',
+            comment: '',
+            id_ref: 'VVlMnSqD.AACAQ3K'
+        },
 		"name": "NomDeLaClasse",
 		"comment": "Desecription de la classe"
 	}

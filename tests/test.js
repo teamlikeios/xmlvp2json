@@ -4,7 +4,7 @@ fs.readFile('./project.xml', function (err,data) {
     if (err) {
         return console.log(err);
     }
-    classe = xmlvp2json(data,false)
-    console.log(JSON.stringify(classe,null, "\t"));
+    classe = xmlvp2json(data,true)
+  //  console.log(JSON.stringify(classe,null, "\t"));
 
 });
