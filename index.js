@@ -1,6 +1,11 @@
 
 var xmldoc = require('xmldoc');
 var packageData=null;
+var primitifTypes = ["int","float","double","number","date","string"];
+
+var isPrimitf = function(str){
+    return primitifTypes.indexOf(str.toLowerCase())>-1;
+}
 /**
 * @param onlyLastPackage parfois il se peu que le diagramme récupère des package d'autre diagramme de classe, cela permet de limiter la recherche
 */
@@ -159,7 +164,8 @@ var parseData= function parseData(data,packageWithSameName){
                                 visibility : attribute.Visibility,
                                 is_constant : (attribute.ReadOnly=="true"&&attribute.InitialValue!=null),
                                 default : attribute.InitialValue,
-                                multiplicity : (attribute.TypeModifier ? 0 : 1)
+                                multiplicity : (attribute.TypeModifier ? 0 : 1),
+                                is_primitif : isPrimitf(type)
                             }
                             oneClass.attributes.push(attributeCrt);
                         }

@@ -1,7 +1,8 @@
 #xmlvp2json
 
 Permet de transformer un fichier xmlvp en json
-
+###v0.3.1
+Ajout du type prmitif
 ###v0.3.0
 Ajout du champ extend
 ###v0.2.0
