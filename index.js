@@ -1,7 +1,7 @@
 
 var xmldoc = require('xmldoc');
 var packageData=null;
-var primitifTypes = ["int","float","double","number","date","string","objectid"];
+var primitifTypes = ["int","float","double","number","date","string","objectid","bool","boolean"];
 
 var isPrimitf = function(str){
     return primitifTypes.indexOf(str.toLowerCase())>-1;
